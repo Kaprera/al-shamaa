@@ -883,7 +883,8 @@ html[lang="ar"] .chip{ font-size:.8rem; }
    "2D + 3D" into "3D + 2D". */
 .stat-card__n,
 .figure__n,
-.cap__fig b{ direction:ltr; unicode-bidi:isolate; }
+.cap__fig b,
+.phone{ direction:ltr; unicode-bidi:isolate; }
 [dir="rtl"] .stat-card__n,
 [dir="rtl"] .figure__n,
 [dir="rtl"] .cap__fig b{ justify-content:flex-end; text-align:right; }

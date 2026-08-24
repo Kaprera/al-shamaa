@@ -151,6 +151,7 @@
     "Precise, intelligent and integrated engineering solutions — reinforcement detailing, BIM expertise and design services for the construction industry.": "حلول هندسية دقيقة وذكية ومتكاملة — تفصيل حديد التسليح، وخبرة BIM، وخدمات التصميم لقطاع الإنشاءات.",
     "AL-SHAMAA ENGINEERING SERVICES AND CONSULTANCY": "الشمّاع للخدمات والاستشارات الهندسية",
     "PRECISION · COORDINATION · BUILDABILITY": "الدقّة · التنسيق · قابلية التنفيذ",
+    "WhatsApp": "واتساب",
     "DESIGNED AND DEVELOPED BY": "تصميم وتطوير"
   };
 
