@@ -189,3 +189,4 @@ under `prefers-reduced-motion: reduce`.
    dedicated 1200×630 share card would be better.
 4. **Domain.** Add a canonical URL and absolute `og:image` path once hosted.
 # al-shamaa
+# al-shamaa
