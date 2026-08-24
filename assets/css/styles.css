@@ -794,6 +794,7 @@ body.menu-open .drawer a{ opacity:1; transform:none; }
   color:rgba(255,255,255,.36);
 }
 .footer__bottom a:hover{ color:var(--gold-light); }
+.footer__credit a{ color:rgba(255,255,255,.55); transition:color .3s; }
 
 /* ==========================================================================
    Scroll reveal
