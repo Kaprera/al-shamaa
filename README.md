@@ -188,3 +188,4 @@ under `prefers-reduced-motion: reduce`.
 3. **Social / OG image.** `og:image` currently points at the raw logo; a
    dedicated 1200×630 share card would be better.
 4. **Domain.** Add a canonical URL and absolute `og:image` path once hosted.
+# al-shamaa
