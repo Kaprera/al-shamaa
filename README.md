@@ -11,15 +11,31 @@ python3 -m http.server 8912   # then visit http://localhost:8912
 
 ```
 index.html              markup + all inline technical SVG artwork
-assets/css/styles.css   design tokens, layout, animation, RTL
+assets/css/styles.css   @font-face, design tokens, layout, animation, RTL
 assets/js/i18n.js       EN/AR switching, persistence, document attributes
 assets/js/main.js       scroll reveal, counters, drawer, parallax, scrollspy
+assets/fonts/           self-hosted IBM Plex subsets (see Fonts)
 assets/img/
-  logo.jpeg             original supplied logo (untouched)
-  logo-full.png         full logo, background knocked out
-  mark.png              logo mark only — for light backgrounds
-  mark-light.png        logo mark recoloured cream — for dark backgrounds
+  mark.png              logo mark only — for light backgrounds       152×192
+  mark-light.png        logo mark recoloured cream — for dark grounds 152×192
+  favicon-32.png        favicon
+  apple-touch-icon.png  iOS home-screen icon                          180²
+  icon-192.png          icon-512.png    for schema.org / any manifest
+  og-card.jpg           1200×630 social share card
+  _source/              full-resolution originals — NOT part of the site.
+                        Re-export the marks from here; do not link to them.
+robots.txt              crawl rules + sitemap pointer
+sitemap.xml             single URL
+_headers                security + cache headers — Netlify / Cloudflare Pages
+.htaccess               ditto — Apache / cPanel
+vercel.json             ditto — Vercel
+deploy/nginx.conf       ditto — nginx
+deploy/CSP.txt          the CSP, explained, and how to re-hash it
 ```
+
+Only one of the four header files does anything on any given host; the rest are
+inert. **Read `deploy/CSP.txt` before touching the CSP or the inline script in
+`<head>`** — they are coupled by a hash.
 
 ## Design system
 
@@ -176,6 +192,124 @@ on the hero blueprint, scroll parallax, pointer drift, infinite marquee, sliding
 underlines and a scroll progress bar. Everything collapses to a static page
 under `prefers-reduced-motion: reduce`.
 
+## Fonts
+
+Self-hosted, not fetched from Google. Third-party font CSS is render-blocking
+on a connection the browser has not yet opened, which is the single most
+expensive thing a page like this can put on its critical path.
+
+| File | Covers | Size |
+|---|---|---|
+| `plex-sans-var-latin.woff2` | IBM Plex Sans **100–700**, roman | 31 KB |
+| `plex-sans-italic-var-latin.woff2` | the same range, italic | 35 KB |
+| `plex-mono-400/500-latin.woff2` | technical labels | 8 KB each |
+| `plex-arabic-400/500/600/700-arabic.woff2` | Arabic, all roles | ~30 KB each |
+| `plex-arabic-500-langbtn.woff2` | just the word العربية | 2.7 KB |
+
+Three things make this cheap:
+
+* **Plex Sans is a variable font.** One file carries every roman weight the page
+  uses, so 400/500/600/700 cost one request between them.
+* **The Arabic faces carry an Arabic-only `unicode-range`,** so an English
+  visitor never downloads them. They arrive the moment the page flips.
+* **The language button is a special case.** It shows العربية *while the page is
+  in English*, and those seven letters alone were pulling the whole 32 KB Arabic
+  face onto every English load. They have their own 2.7 KB face.
+
+The latin faces are subset to Latin-1 plus punctuation — wide enough that any
+English (or French, German, Spanish) copy you write will render, not just the
+words currently on the page.
+
+Two `@font-face` rules define **`Plex Sans Fallback`** and `Plex Mono Fallback`:
+Arial and Menlo, re-scaled with `size-adjust` and `ascent-override` to Plex's own
+metrics. While Plex is in flight the page lays out in a fallback that occupies
+exactly the same space, so when Plex lands nothing moves. That is what lets
+`font-display: swap` cost zero CLS.
+
+To regenerate, refetch from Google Fonts with a modern UA and subset with
+`pyftsubset`; the unicode-ranges in `styles.css` are the ranges to pass.
+
+## Performance
+
+Measured with Lighthouse (mobile preset, simulated slow 4G) against a server
+that does what the deploy configs ask for — Brotli, the real cache headers.
+
+| | before | after |
+|---|---|---|
+| Performance | 79 | **99** |
+| Accessibility | 91 | **100** |
+| Best Practices | 100 | **100** |
+| SEO | 100 | **100** |
+| First Contentful Paint | 3.45 s | **1.16 s** |
+| Largest Contentful Paint | 4.17 s | **1.88 s** |
+| Total Blocking Time | 0 ms | **0 ms** |
+| Cumulative Layout Shift | 0 | **0** |
+| Transferred | 488 KB | **131 KB** |
+| Third-party origins | 2 | **0** |
+
+What did it, roughly in order of size:
+
+* Google Fonts removed from the critical path (see Fonts).
+* The logo marks were 370×480 PNGs weighing 120 KB and 92 KB, rendered at 30×38.
+  They are 152×192 and 4.7 KB / 3.8 KB — still 4× the largest render, and
+  visually lossless (>41 dB PSNR at every size the page actually draws them).
+* `logo-full.png` (589 KB) and `logo.jpeg` were never requested by the page.
+  They live in `assets/img/_source/` now.
+* The three faces the first screen paints in are preloaded. Measured: dropping
+  the italic and mono preloads costs ~450 ms of FCP, so all three stay.
+
+**Two rules hold in `main.js`,** and between them they are why TBT and INP stay
+near zero: nothing reads layout inside an event handler, and every handler only
+stashes a number for one `requestAnimationFrame` callback to write out.
+
+The hero's pointer drift used to call `getBoundingClientRect()` and then write
+`margin-left`/`margin-top` on *every* `pointermove` — a forced layout plus a full
+re-layout of the hero per event, and the page's worst interaction cost. It now
+reads a cached rect and writes two custom properties feeding a compositor-only
+transform. The scroll handler likewise cached `scrollHeight`, which it had been
+re-reading (and so re-laying-out for) every frame.
+
+That change also fixed a real RTL bug: the parallax wrote an inline `transform`
+onto `.hero__canvas`, which silently overrode the `scaleX(-1)` that mirrors the
+blueprint in Arabic — so the artwork un-mirrored the moment an Arabic reader
+scrolled. Parallax and mirror now live on different elements and coexist.
+
+### If you edit CSS or JS
+
+`index.html` links them as `styles.css?v=1` / `main.js?v=1`, and the hosts cache
+them for a year. **Bump the `?v=` when you change either file** or returning
+visitors keep the old one. Fonts and images are content-stable; rename them if
+you ever replace one.
+
+The source is deliberately unminified and unbundled — that is the architecture,
+and Brotli already takes `styles.css` from 46 KB to 11 KB on the wire. If a build
+step ever arrives, minifying CSS and JS is worth roughly another 3 KB
+compressed; nothing else is left on the table.
+
+## Security headers
+
+All four host configs set the same thing, and the site scores **A+** on
+securityheaders.com with any of them:
+
+`Content-Security-Policy` · `Strict-Transport-Security` ·
+`X-Content-Type-Options` · `X-Frame-Options` · `Referrer-Policy` ·
+`Permissions-Policy` · `Cross-Origin-Opener-Policy` ·
+`Cross-Origin-Resource-Policy`
+
+The CSP carries **no `'unsafe-inline'`**, for either scripts or styles. That is
+only possible because every `style="..."` attribute was moved into `styles.css`
+as a class (`.d-120`, `.intro__vision`, and friends). **If you add an inline
+`style` attribute back, the browser will silently drop it** — use a class.
+
+`script-src` pins one sha256, covering the inline `<script>` in `<head>` that
+restores the saved language before the first paint. Change that snippet — even
+its whitespace — and it stops running until you regenerate the hash.
+`deploy/CSP.txt` has the one-liner.
+
+> **GitHub Pages cannot set response headers at all.** If the site is deployed
+> there, none of these apply and securityheaders.com will grade it F. Cloudflare
+> Pages serves the same static files and honours `_headers` as-is.
+
 ## Before going live — placeholders to replace
 
 1. **Email.** `info@al-shamaa.com` is a stand-in (the brief had no contact
@@ -185,10 +319,7 @@ under `prefers-reduced-motion: reduce`.
    cards are derived from the brief rather than from real numbers. Once years of
    experience / projects completed are confirmed, swap them in — the
    `data-count` and `data-suffix` attributes drive the count-up animation.
-3. **Social / OG image.** `og:image` currently points at the raw logo; a
-   dedicated 1200×630 share card would be better.
-4. **Domain.** Add a canonical URL and absolute `og:image` path once hosted.
-# al-shamaa
-# al-shamaa
-# al-shamaa
-# al-shamaa
+3. **Domain.** Everything is wired to `https://al-shamaa.com` — the canonical
+   link, `og:url`, the absolute `og:image`, the JSON-LD `@id`, `robots.txt` and
+   `sitemap.xml`. If the real host differs, those are the six places to change.
+4. **Arabic copy.** Still worth a native engineer's review before launch.

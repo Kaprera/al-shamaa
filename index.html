@@ -3,29 +3,89 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>AL-Shamaa Engineering Services and Consultancy — Reinforcement Detailing, BIM &amp; Structural Design</title>
 <meta name="description" content="AL-Shamaa delivers highly accurate reinforcement shop drawings, BIM modelling and structural design — from simple structures to complex geometries. Precision detailing that reduces on-site conflict and keeps construction moving.">
+<link rel="canonical" href="https://al-shamaa.com/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="theme-color" content="#0B2136">
-<link rel="icon" href="assets/img/mark.png" type="image/png">
+<meta name="color-scheme" content="light">
+
+<!-- Restore the saved language before the first paint. Without this a returning
+     Arabic visitor gets a full LTR render that then flips to RTL — a whole-page
+     reflow and a large layout shift. Kept inline (and out of a file) because a
+     blocking request here would cost more than it saves; its sha256 is pinned
+     in the CSP so script-src stays free of 'unsafe-inline'. -->
+<script>try{if(localStorage.getItem("alshamaa-lang")==="ar"){var d=document.documentElement;d.lang="ar";d.dir="rtl"}}catch(e){}</script>
+
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="AL-Shamaa Engineering Services and Consultancy">
+<meta property="og:url" content="https://al-shamaa.com/">
+<meta property="og:locale" content="en">
+<meta property="og:locale:alternate" content="ar">
 <meta property="og:title" content="AL-Shamaa Engineering Services and Consultancy">
 <meta property="og:description" content="Reinforcement shop drawings, BIM services and structural design — precise, buildable, coordinated.">
-<meta property="og:image" content="assets/img/logo.jpeg">
+<meta property="og:image" content="https://al-shamaa.com/assets/img/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="AL-Shamaa Engineering Services and Consultancy — reinforcement detailing, BIM and design.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AL-Shamaa Engineering Services and Consultancy">
+<meta name="twitter:description" content="Reinforcement shop drawings, BIM services and structural design — precise, buildable, coordinated.">
+<meta name="twitter:image" content="https://al-shamaa.com/assets/img/og-card.jpg">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/styles.css">
+<!-- The three faces the first screen actually paints in: the roman and italic
+     variable Plex Sans behind the H1, and the mono behind the eyebrow labels.
+     Everything else in the family is left to load on its own schedule. -->
+<link rel="preload" href="assets/fonts/plex-sans-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/plex-sans-italic-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/plex-mono-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/styles.css?v=1">
+
+<script src="assets/js/i18n.js?v=1" defer></script>
+<script src="assets/js/main.js?v=1" defer></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://al-shamaa.com/#organization",
+  "name": "AL-Shamaa Engineering Services and Consultancy",
+  "alternateName": "AL-SHAMAA",
+  "url": "https://al-shamaa.com/",
+  "logo": "https://al-shamaa.com/assets/img/icon-512.png",
+  "image": "https://al-shamaa.com/assets/img/og-card.jpg",
+  "description": "Reinforcement detailing, BIM modelling and structural design services — accurate shop drawings, bar bending schedules, coordinated models and design support for simple and complex structures.",
+  "email": "info@al-shamaa.com",
+  "telephone": "+961-76-793494",
+  "slogan": "Precision in every single bar.",
+  "knowsLanguage": ["en", "ar"],
+  "areaServed": "Worldwide",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Engineering services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Reinforcement shop drawings and bar bending schedules" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "BIM modelling and clash detection" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Structural design and solar support systems" } }
+    ]
+  }
+}
+</script>
 </head>
 <body>
+
+<a class="skip" href="#top"><span data-i18n>Skip to content</span></a>
 
 <div class="progress" id="progress" aria-hidden="true"></div>
 
 <!-- ══ Header ══════════════════════════════════════════════════════════ -->
 <header class="header" id="header">
   <div class="header__bar">
-    <a class="brand" href="#top" aria-label="AL-Shamaa — home">
+    <a class="brand" href="#top">
       <img class="brand__mark brand__mark--light" src="assets/img/mark-light.png" alt="" width="30" height="38">
       <img class="brand__mark brand__mark--dark"  src="assets/img/mark.png" alt="" width="30" height="38">
       <span class="brand__txt">
@@ -262,7 +322,7 @@
       </div>
     </div>
 
-    <div data-reveal style="--d:120ms">
+    <div data-reveal class="d-120">
       <!-- NOTE: swap these in for real company figures (years of experience,
            projects completed, m3 of concrete detailed) once they are confirmed. -->
       <div class="figures">
@@ -284,9 +344,9 @@
         </div>
       </div>
 
-      <div style="margin-top:26px">
-        <p class="lede" style="font-size:.9375rem">
-          <strong style="color:var(--navy)"><span data-i18n>Our vision —</span></strong>
+      <div class="intro__vision">
+        <p class="lede">
+          <strong><span data-i18n>Our vision —</span></strong>
           <span data-i18n>to revolutionise the construction industry by delivering precise, intelligent and integrated engineering solutions that drive efficiency, accuracy and sustainable growth.</span>
         </p>
       </div>
@@ -300,9 +360,9 @@
     <div class="section-head">
       <div data-reveal>
         <span class="eyebrow"><span data-i18n>What we deliver</span></span>
-        <h2 class="display section-title" style="margin-top:18px"><span data-i18n>Three disciplines,</span><br><span data-i18n>one coordinated output.</span></h2>
+        <h2 class="display section-title"><span data-i18n>Three disciplines,</span><br><span data-i18n>one coordinated output.</span></h2>
       </div>
-      <p class="lede" data-reveal style="--d:100ms">
+      <p class="lede d-100" data-reveal>
         <span data-i18n>Every deliverable is produced against the project's own standards and checked before it leaves the office — so what reaches site is clear, complete and ready to build.</span>
       </p>
     </div>
@@ -355,7 +415,7 @@
       </article>
 
       <!-- 02 BIM Services -->
-      <article class="svc" data-reveal style="--d:110ms">
+      <article class="svc d-110" data-reveal>
         <div class="svc__art">
           <span class="svc__no">02</span>
           <svg viewBox="0 0 480 330" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -395,7 +455,7 @@
       </article>
 
       <!-- 03 Design -->
-      <article class="svc" data-reveal style="--d:220ms">
+      <article class="svc d-220" data-reveal>
         <div class="svc__art">
           <span class="svc__no">03</span>
           <svg viewBox="0 0 480 330" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -448,9 +508,9 @@
     <div class="section-head">
       <div data-reveal>
         <span class="eyebrow eyebrow--light"><span data-i18n>Why AL-Shamaa</span></span>
-        <h2 class="display section-title" style="margin-top:18px"><span data-i18n>Technical value,</span><br><span data-i18n>added early.</span></h2>
+        <h2 class="display section-title"><span data-i18n>Technical value,</span><br><span data-i18n>added early.</span></h2>
       </div>
-      <p class="lede" data-reveal style="--d:100ms">
+      <p class="lede d-100" data-reveal>
         <span data-i18n>Detailing is where design meets reality. We use that position to remove ambiguity before it becomes a delay, a variation, or a crowded bar zone nobody can place.</span>
       </p>
     </div>
@@ -472,7 +532,7 @@
         </div>
       </article>
 
-      <article class="cap" data-reveal style="--d:80ms">
+      <article class="cap d-80" data-reveal>
         <span class="cap__ic" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="9"/></svg>
         </span>
@@ -480,7 +540,7 @@
         <p><span data-i18n>Curved walls, transfer structures, sloping slabs and congested nodes — detailed so the steel actually fits.</span></p>
       </article>
 
-      <article class="cap" data-reveal style="--d:140ms">
+      <article class="cap d-140" data-reveal>
         <span class="cap__ic" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
         </span>
@@ -488,7 +548,7 @@
         <p><span data-i18n>Clashes and buildability issues are caught in the model and the check, before they cost programme time.</span></p>
       </article>
 
-      <article class="cap" data-reveal style="--d:200ms">
+      <article class="cap d-200" data-reveal>
         <span class="cap__ic" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
         </span>
@@ -496,7 +556,7 @@
         <p><span data-i18n>Deliverables align with your project requirements, client templates and industry standards.</span></p>
       </article>
 
-      <article class="cap" data-reveal style="--d:260ms">
+      <article class="cap d-260" data-reveal>
         <span class="cap__ic" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/><circle cx="12" cy="12" r="3.2"/></svg>
         </span>
@@ -504,7 +564,7 @@
         <p><span data-i18n>Solar support structures and efficient steel arrangements that reduce waste and rework.</span></p>
       </article>
 
-      <article class="cap" data-reveal style="--d:320ms">
+      <article class="cap d-320" data-reveal>
         <span class="cap__ic" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg>
         </span>
@@ -522,9 +582,9 @@
     <div class="section-head">
       <div data-reveal>
         <span class="eyebrow"><span data-i18n>How a package runs</span></span>
-        <h2 class="display section-title" style="margin-top:18px"><span data-i18n>From consultant</span><br><span data-i18n>drawings to site.</span></h2>
+        <h2 class="display section-title"><span data-i18n>From consultant</span><br><span data-i18n>drawings to site.</span></h2>
       </div>
-      <p class="lede" data-reveal style="--d:100ms">
+      <p class="lede d-100" data-reveal>
         <span data-i18n>A predictable route through every reinforcement package, with the checking built in rather than bolted on at the end.</span>
       </p>
     </div>
@@ -536,25 +596,25 @@
         <p class="step__d"><span data-i18n>We review the consultant's drawings, specification and standards, agree the delivery method — BIM or 2D — and raise technical queries early.</span></p>
         <span class="step__meta"><span data-i18n>Inputs locked</span></span>
       </div>
-      <div class="step" data-reveal style="--d:70ms">
+      <div class="step d-70" data-reveal>
         <span class="step__n">02</span>
         <h3 class="step__t"><span data-i18n>Model or draft</span></h3>
         <p class="step__d"><span data-i18n>Reinforcement is modelled in 3D or drafted in 2D against the agreed conventions, element by element, with schedules generated from the same source.</span></p>
         <span class="step__meta">BIM · CAD</span>
       </div>
-      <div class="step" data-reveal style="--d:140ms">
+      <div class="step d-140" data-reveal>
         <span class="step__n">03</span>
         <h3 class="step__t"><span data-i18n>Coordinate &amp; clash</span></h3>
         <p class="step__d"><span data-i18n>Rebar is checked against embeds, openings, services and adjacent pours so congestion and clashes are resolved before issue.</span></p>
         <span class="step__meta"><span data-i18n>Buildability</span></span>
       </div>
-      <div class="step" data-reveal style="--d:210ms">
+      <div class="step d-210" data-reveal>
         <span class="step__n">04</span>
         <h3 class="step__t"><span data-i18n>Check &amp; issue</span></h3>
         <p class="step__d"><span data-i18n>An independent check covers geometry, laps, covers, bar marks and schedules. Nothing leaves the office unchecked.</span></p>
         <span class="step__meta"><span data-i18n>QA gate</span></span>
       </div>
-      <div class="step" data-reveal style="--d:280ms">
+      <div class="step d-280" data-reveal>
         <span class="step__n">05</span>
         <h3 class="step__t"><span data-i18n>Site support</span></h3>
         <p class="step__d"><span data-i18n>We stay available through construction for RFIs, revisions and as-built updates — keeping the drawing set true to what is actually being built.</span></p>
@@ -570,9 +630,9 @@
     <div class="section-head">
       <div data-reveal>
         <span class="eyebrow"><span data-i18n>Where we work</span></span>
-        <h2 class="display section-title" style="margin-top:18px"><span data-i18n>Any scale.</span><br><span data-i18n>Any complexity.</span></h2>
+        <h2 class="display section-title"><span data-i18n>Any scale.</span><br><span data-i18n>Any complexity.</span></h2>
       </div>
-      <p class="lede" data-reveal style="--d:100ms">
+      <p class="lede d-100" data-reveal>
         <span data-i18n>Reinforcement detailing and design support across the structures that make up construction and design programmes.</span>
       </p>
     </div>
@@ -583,27 +643,27 @@
         <h3><span data-i18n>Residential &amp; mixed use</span></h3>
         <p><span data-i18n>Cores, slabs, shear walls and podium transfers.</span></p>
       </article>
-      <article class="sector" data-reveal style="--d:60ms">
+      <article class="sector d-60" data-reveal>
         <span class="sector__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="8" height="17"/><rect x="13" y="9" width="8" height="12"/><path d="M6 8h2M6 12h2M16 13h2"/></svg></span>
         <h3><span data-i18n>Commercial</span></h3>
         <p><span data-i18n>Frames, basements and long-span floor systems.</span></p>
       </article>
-      <article class="sector" data-reveal style="--d:120ms">
+      <article class="sector d-120" data-reveal>
         <span class="sector__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 17h20M6 17V9M18 17V9M2 9h20l-3-4H5Z"/><path d="M10 17v-4h4v4"/></svg></span>
         <h3><span data-i18n>Infrastructure</span></h3>
         <p><span data-i18n>Retaining walls, culverts, abutments and decks.</span></p>
       </article>
-      <article class="sector" data-reveal style="--d:180ms">
+      <article class="sector d-180" data-reveal>
         <span class="sector__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M5 20V8h6v12M13 20V4h6v16"/><path d="M7 11h2M7 15h2M15 8h2M15 12h2"/></svg></span>
         <h3><span data-i18n>Industrial</span></h3>
         <p><span data-i18n>Foundations, pits, machine bases and plant structures.</span></p>
       </article>
-      <article class="sector" data-reveal style="--d:240ms">
+      <article class="sector d-240" data-reveal>
         <span class="sector__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15 12 5l8 10Z"/><path d="M2 20h20"/><path d="M12 15v5"/></svg></span>
         <h3><span data-i18n>Solar &amp; renewables</span></h3>
         <p><span data-i18n>Panel support systems, ballast and pile foundations.</span></p>
       </article>
-      <article class="sector" data-reveal style="--d:300ms">
+      <article class="sector d-300" data-reveal>
         <span class="sector__ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 3v9l6.4 6.4"/></svg></span>
         <h3><span data-i18n>Complex geometry</span></h3>
         <p><span data-i18n>Curved, sloping and irregular forms modelled in 3D.</span></p>
@@ -613,10 +673,10 @@
 </section>
 
 <!-- ══ Standards ═══════════════════════════════════════════════════════ -->
-<section class="standards">
+<div class="standards">
   <div class="shell standards__row">
     <p class="standards__label" data-reveal><span data-i18n>Delivered against your project's standards and templates</span></p>
-    <div class="standards__list" data-reveal style="--d:80ms">
+    <div class="standards__list d-80" data-reveal>
       <span class="chip"><span data-i18n>Reinforcement detailing</span></span>
       <span class="chip"><span data-i18n>Bar bending schedules</span></span>
       <span class="chip"><span data-i18n>3D rebar models</span></span>
@@ -627,7 +687,7 @@
       <span class="chip"><span data-i18n>RFI support</span></span>
     </div>
   </div>
-</section>
+</div>
 
 <!-- ══ CTA / Contact ═══════════════════════════════════════════════════ -->
 <section class="cta" id="contact">
@@ -680,8 +740,8 @@
       <div class="footer__brand">
         <img class="brand__mark" src="assets/img/mark-light.png" alt="AL-Shamaa" width="38" height="48">
         <div>
-          <div class="brand__name" style="font-size:1.05rem">AL-SHAMAA</div>
-          <div class="brand__sub" style="opacity:.7"><span data-i18n>Engineering Services and Consultancy</span></div>
+          <div class="brand__name">AL-SHAMAA</div>
+          <div class="brand__sub"><span data-i18n>Engineering Services and Consultancy</span></div>
         </div>
         <p class="footer__blurb">
           <span data-i18n>Precise, intelligent and integrated engineering solutions — reinforcement detailing, BIM expertise and design services for the construction industry.</span>
@@ -689,7 +749,7 @@
       </div>
 
       <div>
-        <h4><span data-i18n>Services</span></h4>
+        <h3><span data-i18n>Services</span></h3>
         <ul>
           <li><a href="#services"><span data-i18n>Shop Drawings</span></a></li>
           <li><a href="#services"><span data-i18n>BIM Services</span></a></li>
@@ -699,7 +759,7 @@
       </div>
 
       <div>
-        <h4><span data-i18n>Company</span></h4>
+        <h3><span data-i18n>Company</span></h3>
         <ul>
           <li><a href="#about"><span data-i18n>About</span></a></li>
           <li><a href="#capabilities"><span data-i18n>Capabilities</span></a></li>
@@ -709,12 +769,12 @@
       </div>
 
       <div>
-        <h4><span data-i18n>Contact</span></h4>
+        <h3><span data-i18n>Contact</span></h3>
         <address>
           <a href="mailto:info@al-shamaa.com">info@al-shamaa.com</a>
           <a class="phone" href="https://wa.me/96176793494" target="_blank" rel="noopener">+961 76 793 494</a>
           <span><span data-i18n>Construction &amp; Design</span></span>
-          <a class="tlink" href="#contact" style="color:var(--gold-light)">
+          <a class="tlink" href="#contact">
             <span data-i18n>Request a quote</span>
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M6 4h6v6"/></svg>
           </a>
@@ -730,7 +790,5 @@
   </div>
 </footer>
 
-<script src="assets/js/i18n.js"></script>
-<script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+# AL-Shamaa Engineering Services and Consultancy
+User-agent: *
+Allow: /
+
+# Working files that ship with the repo but are not part of the site. Robots
+# rules only ask politely — if the host can exclude these from the deploy
+# (or deny them, as .htaccess does), that is the stronger fix.
+Disallow: /assets/img/_source/
+Disallow: /details.pdf
+Disallow: /al%20shamaa%20logo.jpeg
+
+Sitemap: https://al-shamaa.com/sitemap.xml
