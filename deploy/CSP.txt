@@ -1,0 +1,33 @@
+Content-Security-Policy (single source of truth — keep the four host configs below in sync)
+
+  default-src 'self';
+  base-uri 'self';
+  object-src 'none';
+  frame-ancestors 'none';
+  form-action 'self';
+  img-src 'self' data:;
+  style-src 'self';
+  font-src 'self';
+  script-src 'self' 'sha256-qjmDI1eVT6YrJplB8t1HEFGRq4b1q9WQF68a6y5iqec=';
+  connect-src 'self';
+  manifest-src 'self';
+  upgrade-insecure-requests
+
+Notes
+-----
+* No 'unsafe-inline' anywhere. That is only possible because every inline
+  style="..." attribute was moved into styles.css — if you add one back, the
+  browser will silently drop it. Use a class.
+* The single sha256 covers the one inline <script> in <head> (the pre-paint
+  language restore). IT IS A HASH OF THE EXACT BYTES BETWEEN THE TAGS. Edit
+  that snippet — even its whitespace — and the script stops running until you
+  regenerate the hash:
+
+    node -e "const c=require('crypto'),f=require('fs');\
+    const m=/<script>([\s\S]*?)<\/script>/.exec(f.readFileSync('index.html','utf8'));\
+    console.log('sha256-'+c.createHash('sha256').update(m[1],'utf8').digest('base64'))"
+
+  The JSON-LD block needs no hash: application/ld+json is a data block, never
+  executed, and so is outside CSP's reach.
+* mailto: and the wa.me link are navigations, not fetches, so neither
+  form-action nor connect-src has to allow them.
