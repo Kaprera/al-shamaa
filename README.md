@@ -22,6 +22,8 @@ assets/img/
   apple-touch-icon.png  iOS home-screen icon                          180²
   icon-192.png          icon-512.png    for schema.org / any manifest
   og-card.jpg           1200×630 social share card
+  work/                 Ohana Villas case study — one render plus five drawing
+                        sheets cropped out of the issued PDFs (see Case study)
   _source/              full-resolution originals — NOT part of the site.
                         Re-export the marks from here; do not link to them.
 robots.txt              crawl rules + sitemap pointer
@@ -62,10 +64,25 @@ generic luxury:
 Plex Sans Arabic is the matched Arabic companion, so both scripts share one
 skeleton and the page does not change character when it flips language.
 
-All imagery is hand-drawn SVG — a reinforcement cage in the hero, a detailed
-beam elevation, an isometric BIM frame and a solar support frame on the service
-cards. Nothing depends on stock photography, and everything stays crisp at any
-size. Swap them for renders or site photography later if wanted.
+Everything above the case study is hand-drawn SVG — a reinforcement cage in the
+hero, a detailed beam elevation, an isometric BIM frame and a solar support
+frame on the service cards. No stock photography, and it all stays crisp at any
+size. The only raster imagery on the page is the Ohana Villas case study, which
+is real project material rather than decoration.
+
+## Case study
+
+`#work` carries one project: Ohana Villas Phase 04, Damour · Chouf. The five
+sheet images in `assets/img/work/` are rendered out of the issued package at
+170 dpi, cropped to drop the title block, trimmed and encoded as webp at 1200 px
+wide. To regenerate or add a sheet, render the PDF with `pdftoppm -r 170`, crop
+the right-hand ~16 % (the title block, which carries the consultant's contact
+details and the approval initials), trim the white margin and encode with
+`cwebp -q 80`.
+
+The source PDFs live in `Ohana/`, which is gitignored on purpose: anything
+committed here lands in the deploy root and would be publicly fetchable. Keep
+issued client drawings out of the repo and publish only the cropped previews.
 
 ## Hero sizing
 
@@ -183,7 +200,8 @@ the second arrow removed.
 ## Sections
 
 Hero → capability marquee → about + figures → three services → capabilities
-bento → five-step process → sectors → standards strip → CTA → footer.
+bento → five-step process → selected work → sectors → standards strip → CTA →
+footer.
 
 ## Motion
 
