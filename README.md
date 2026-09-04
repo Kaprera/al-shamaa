@@ -200,8 +200,7 @@ the second arrow removed.
 ## Sections
 
 Hero → capability marquee → about + figures → three services → capabilities
-bento → five-step process → selected work → sectors → standards strip → CTA →
-footer.
+bento → five-step process → selected work → sectors → CTA → footer.
 
 ## Motion
 
