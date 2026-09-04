@@ -294,10 +294,13 @@ scrolled. Parallax and mirror now live on different elements and coexist.
 
 ### If you edit CSS or JS
 
-`index.html` links them as `styles.css?v=1` / `main.js?v=1`, and the hosts cache
-them for a year. **Bump the `?v=` when you change either file** or returning
-visitors keep the old one. Fonts and images are content-stable; rename them if
-you ever replace one.
+`index.html` links each of the three with a `?v=` query string, and the hosts
+cache them for a year as `immutable`. **Bump the `?v=` on any file you change**
+or returning visitors keep the old one — and so does the CDN, which is the
+failure mode that bites: the HTML revalidates on every load, so a new page ships
+against a year-old stylesheet and the new rules simply are not there. Bump only
+what changed, so the untouched files stay cached. Fonts and images are
+content-stable; rename them if you ever replace one.
 
 The source is deliberately unminified and unbundled — that is the architecture,
 and Brotli already takes `styles.css` from 46 KB to 11 KB on the wire. If a build
