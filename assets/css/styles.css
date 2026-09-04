@@ -942,24 +942,6 @@ body.menu-open .drawer a{ opacity:1; transform:none; }
 .sector p{ font-size:.8125rem; color:var(--text-soft); }
 
 /* ==========================================================================
-   Standards strip
-   ========================================================================== */
-.standards{ background:var(--cream); padding:clamp(48px,5vw,72px) 0; border-block:1px solid var(--line); }
-.standards__row{ display:grid; gap:26px; align-items:center; }
-@media (min-width:900px){ .standards__row{ grid-template-columns:auto 1fr; gap:56px; } }
-.standards__label{ font-family:var(--font-mono); font-size:.66rem; letter-spacing:.18em; text-transform:uppercase; color:var(--text-soft); max-width:20ch; line-height:1.7; }
-.standards__list{ display:flex; flex-wrap:wrap; gap:10px 12px; }
-.chip{
-  padding:9px 17px; border-radius:999px;
-  border:1px solid var(--line);
-  font-family:var(--font-mono); font-size:.72rem; letter-spacing:.1em;
-  color:var(--navy);
-  background:var(--paper);
-  transition:border-color .4s, color .4s, transform .5s var(--ease-out), background .4s;
-}
-.chip:hover{ border-color:var(--gold); color:var(--gold-deep); transform:translateY(-2px); background:#fff; }
-
-/* ==========================================================================
    CTA
    ========================================================================== */
 .cta{ padding:clamp(70px,7vw,110px) 0; background:var(--cream); }
@@ -1142,14 +1124,12 @@ html[lang="ar"] .step__meta,
 html[lang="ar"] .case__facts dt,
 html[lang="ar"] .case__loc,
 html[lang="ar"] .case__note,
-html[lang="ar"] .sheet__no,
-html[lang="ar"] .standards__label{ font-size:.72rem; line-height:1.6; }
+html[lang="ar"] .sheet__no{ font-size:.72rem; line-height:1.6; }
 html[lang="ar"] .footer__bottom,
 html[lang="ar"] .drawer__foot,
 html[lang="ar"] .hero__foot{ font-size:.72rem; }
 html[lang="ar"] .eyebrow{ font-size:.78rem; }
 html[lang="ar"] .marquee__item{ font-size:.85rem; }
-html[lang="ar"] .chip{ font-size:.8rem; }
 
 /* Figures stay in logical (LTR) order — bidi would otherwise reorder
    "2D + 3D" into "3D + 2D". */
@@ -1180,8 +1160,6 @@ html[lang="ar"] .chip{ font-size:.8rem; }
 [dir="rtl"] .sheet__no,
 [dir="rtl"] .cnote__n,
 [dir="rtl"] .case__note,
-[dir="rtl"] .standards__label,
-[dir="rtl"] .chip,
 [dir="rtl"] .cta__fact dt,
 [dir="rtl"] .footer h3,
 [dir="rtl"] .footer__bottom,

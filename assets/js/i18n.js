@@ -128,15 +128,6 @@
     "Panel support systems, ballast and pile foundations.": "أنظمة دعم الألواح وقواعد الأثقال والخوازيق.",
     "Complex geometry": "الأشكال المعقدة",
     "Curved, sloping and irregular forms modelled in 3D.": "أشكال منحنية ومائلة وغير منتظمة مُنمذَجة ثلاثياً.",
-    "Delivered against your project's standards and templates": "تُسلَّم وفق معايير مشروعك وقوالبه",
-    "Reinforcement detailing": "تفصيل حديد التسليح",
-    "Bar bending schedules": "جداول ثني الحديد",
-    "3D rebar models": "نماذج حديد ثلاثية الأبعاد",
-    "Clash reports": "تقارير التعارضات",
-    "Structural analysis": "التحليل الإنشائي",
-    "Solar support design": "تصميم دعامات الطاقة الشمسية",
-    "As-built updates": "تحديثات «كما نُفِّذ»",
-    "RFI support": "دعم الاستفسارات الفنية",
     "Start a conversation": "لنبدأ الحديث",
     "Send us the drawings.": "أرسل لنا المخططات.",
     "We'll tell you what it takes.": "وسنخبرك بما يتطلّبه الأمر.",
@@ -186,7 +177,7 @@
     "The approach": "المعالجة",
     "The whole ground-to-first-floor zone was built as a 3D rebar model first, so laps, covers and the congested column-to-slab junctions were settled where they could actually be seen.": "بُنيت المنطقة من الأرضي حتى الأول كنموذج حديد ثلاثي الأبعاد أولاً، فحُسمت التراكبات والأغطية ووصلات العمود بالبلاطة المزدحمة في مكان يمكن رؤيتها فيه فعلاً.",
     "The outcome": "النتيجة",
-    "Elevations, plans, 3D views and the bar bending schedule all came off that one model — so geometry and quantities agree, and the set went out as Rev 00, issued for approval.": "المقاطع والمساقط واللقطات ثلاثية الأبعاد وجدول ثني الحديد خرجت جميعها من النموذج ذاته — فتطابقت الهندسة مع الكميات، وصدرت الحزمة بالمراجعة 00 للاعتماد."
+    "Elevations, plans, 3D views and the bar bending schedule all came off that one model.": "المقاطع والمساقط واللقطات ثلاثية الأبعاد وجدول ثني الحديد خرجت جميعها من النموذج ذاته."
   };
 
   /* strings that live in attributes rather than text nodes */
