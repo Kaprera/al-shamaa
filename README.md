@@ -72,7 +72,7 @@ is real project material rather than decoration.
 
 ## Case study
 
-`#work` carries one project: Ohana Villas Phase 04, Damour · Chouf. The five
+`#work` carries one project: Ohana Villas Phase I2, Damour · Chouf. The five
 sheet images in `assets/img/work/` are rendered out of the issued package at
 170 dpi, cropped to drop the title block, trimmed and encoded as webp at 1200 px
 wide. To regenerate or add a sheet, render the PDF with `pdftoppm -r 170`, crop
