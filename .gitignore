@@ -1,0 +1,7 @@
+# Source material for the Ohana case study: the full issued drawing package,
+# title blocks and all. The site ships cropped webp previews of these sheets
+# (assets/img/work/) — the PDFs themselves stay local, because anything
+# committed here lands in the deploy root and would be publicly fetchable.
+/Ohana/
+
+.DS_Store
