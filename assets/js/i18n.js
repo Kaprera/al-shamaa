@@ -149,9 +149,9 @@
     /* Selected work / Ohana Villas case study */
     "Work": "أعمالنا",
     "Selected work": "مختارات من أعمالنا",
-    "A villa that leans.": "فيلا مائلة.",
-    "Rebar that follows.": "وحديد تسليح يتبعها.",
-    "One reinforcement package taken end to end — modelled in 3D against the architecture, resolved where the columns meet the slabs, and issued as drawings and schedules the steel fixers could work straight from.": "حزمة حديد تسليح كاملة من أولها إلى آخرها — نُمذِجت ثلاثياً وفق التصميم المعماري، وحُسمت مواضع التقاء الأعمدة بالبلاطات، وصدرت مخططات وجداول يعمل منها الحدّادون مباشرة.",
+    "Two projects.": "مشروعان.",
+    "Nothing standard in either.": "لا شيء نمطي في أي منهما.",
+    "One reinforcement package where every column is raked, and one solar plant where the wind rather than the weight decides the steel. Both were modelled before anything was drawn, and both were issued as documents the site could build straight from.": "حزمة حديد تسليح كلّ أعمدتها مائلة، ومحطة طاقة شمسية تحدّد الرياح فيها مقاطع الحديد لا الأوزان. نُمذِج المشروعان قبل رسم أي مخطط، وصدرا وثائق يبني منها الموقع مباشرة.",
     "Case study": "دراسة حالة",
     "Phase I2": "المرحلة I2",
     "Damour · Chouf, Lebanon": "الدامور · الشوف، لبنان",
@@ -172,7 +172,26 @@
     "The approach": "المعالجة",
     "The whole ground-to-first-floor zone was built as a 3D rebar model first, so laps, covers and the congested column-to-slab junctions were settled where they could actually be seen.": "بُنيت المنطقة من الأرضي حتى الأول كنموذج حديد ثلاثي الأبعاد أولاً، فحُسمت التراكبات والأغطية ووصلات العمود بالبلاطة المزدحمة في مكان يمكن رؤيتها فيه فعلاً.",
     "The outcome": "النتيجة",
-    "Elevations, plans, 3D views and the bar bending schedule all came off that one model.": "المقاطع والمساقط واللقطات ثلاثية الأبعاد وجدول ثني الحديد خرجت جميعها من النموذج ذاته."
+    "Elevations, plans, 3D views and the bar bending schedule all came off that one model.": "المقاطع والمساقط واللقطات ثلاثية الأبعاد وجدول ثني الحديد خرجت جميعها من النموذج ذاته.",
+
+    /* Anjar–Kherbet Rouha solar plant case study. "Case study", "Scope",
+       "Elements", "Method" and the three note headings are shared with the
+       Ohana block above — they are keyed once and used by both. */
+    "Anjar–Kherbet Rouha Solar Plant": "محطة عنجر–خربة روحا للطاقة الشمسية",
+    "Bekaa, Lebanon": "البقاع، لبنان",
+    "A ground-mounted PV plant on an exposed ridge, where the panels weigh almost nothing and the wind decides the structure. We set out the array, ran the support tables through a wind simulation, designed the bolted base connections and their anchors against the uplift that came out of it, and sized the spread footings that hold the whole thing down.": "محطة كهروضوئية أرضية على تلّة مكشوفة، لا يكاد وزن الألواح فيها يُذكر، والرياح هي التي تحدّد الهيكل. وضعنا توزيع الألواح، وأخضعنا طاولات الحمل لمحاكاة رياح، وصمّمنا وصلات القواعد المبرشمة ومراسيها في مواجهة قوى الرفع الناتجة عنها، وحدّدنا أبعاد القواعد المنفصلة التي تثبّت المنشأ كلّه.",
+    "PV support structure analysis & design": "تحليل وتصميم هيكل حمل الألواح الكهروضوئية",
+    "Steel tables, base connections, spread footings": "طاولات حديدية، وصلات قواعد، قواعد منفصلة",
+    "3D wind simulation → connection & footing design": "محاكاة رياح ثلاثية الأبعاد ← تصميم الوصلات والقواعد",
+    "Array layout — ten strings across the site": "توزيع الألواح — عشر سلاسل على امتداد الموقع",
+    "Wind pressure map — 45 m/s simulation": "خريطة ضغط الرياح — محاكاة عند 45 م/ث",
+    "Base connection — members and anchors": "وصلة القاعدة — العناصر والمراسي",
+    "Base plate — stress and anchor checks": "لوح القاعدة — الإجهادات وتدقيق المراسي",
+    "Spread footing — geometry and materials": "القاعدة المنفصلة — الأبعاد والمواد",
+    "The tables as built, on site": "الطاولات بعد التنفيذ في الموقع",
+    "The panels are light and the ridge is exposed, so wind governs rather than gravity — uplift on the tables, tension in the anchors, overturning on the pads.": "الألواح خفيفة والتلّة مكشوفة، فالرياح هي الحاكمة لا الجاذبية — رفع على الطاولات، وشدّ في المراسي، وانقلاب على القواعد.",
+    "The tables were simulated in 3D so the pressure they actually see drove the member sizes, instead of a blanket coefficient applied to the whole array.": "حوكيت الطاولات ثلاثية الأبعاد ليقود توزيع الضغط الفعلي عليها اختيار مقاطع العناصر، بدل معامل واحد يُعمَّم على المصفوفة كلّها.",
+    "Members, base connections, anchors and footings all sized off one set of load cases, with the governing anchor left at 77 % of capacity.": "حُدّدت مقاطع العناصر ووصلات القواعد والمراسي والقواعد جميعها من مجموعة حالات تحميل واحدة، وبقي المرساة الحاكمة عند 77 % من طاقتها."
   };
 
   /* strings that live in attributes rather than text nodes */

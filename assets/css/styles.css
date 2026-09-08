@@ -875,11 +875,20 @@ body.menu-open .drawer a{ opacity:1; transform:none; }
 .case__facts dt{ font-family:var(--font-mono); font-size:.63rem; letter-spacing:.15em; text-transform:uppercase; color:rgba(255,255,255,.45); }
 .case__facts dd{ font-size:.875rem; color:rgba(255,255,255,.8); }
 
+/* The section carries more than one project. Each is a block — header card,
+   sheet grid, closing notes — and the rule is the seam between them. */
+.project + .project{
+  margin-top:clamp(44px,5.5vw,80px);
+  padding-top:clamp(44px,5.5vw,80px);
+  border-top:1px solid rgba(255,255,255,.12);
+}
+
 .case-grid{ display:grid; gap:14px; margin-top:14px; }
 @media (min-width:720px){
   .case-grid{ grid-template-columns:repeat(6,1fr); }
   .sheet--half{ grid-column:span 3; }
   .sheet--third{ grid-column:span 2; }
+  .sheet--full{ grid-column:1 / -1; }
 }
 .sheet{
   margin:0;
@@ -900,6 +909,10 @@ body.menu-open .drawer a{ opacity:1; transform:none; }
   border-bottom:1px solid rgba(255,255,255,.1);
 }
 .sheet__img img{ display:block; width:100%; height:100%; object-fit:contain; }
+/* One card in the solar set is a photograph rather than a drawing: it fills
+   its frame instead of being letterboxed onto the white sheet ground. */
+.sheet--photo .sheet__img{ aspect-ratio:16/9; padding:0; background:#0F2A42; }
+.sheet--photo .sheet__img img{ object-fit:cover; }
 .sheet figcaption{ padding:14px 16px 16px; }
 .sheet__t{ font-size:.875rem; color:rgba(255,255,255,.78); line-height:1.45; }
 .case-notes{ display:grid; margin-top:clamp(34px,4vw,56px); border-top:1px solid rgba(255,255,255,.12); }
