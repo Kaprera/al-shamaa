@@ -22,8 +22,8 @@ assets/img/
   apple-touch-icon.png  iOS home-screen icon                          180²
   icon-192.png          icon-512.png    for schema.org / any manifest
   og-card.jpg           1200×630 social share card
-  work/                 Ohana Villas case study — one render plus five drawing
-                        sheets cropped out of the issued PDFs (see Case study)
+  work/                 the two case studies — renders, photographs and sheets
+                        cropped out of the source material (see Case studies)
   _source/              full-resolution originals — NOT part of the site.
                         Re-export the marks from here; do not link to them.
 robots.txt              crawl rules + sitemap pointer
@@ -70,19 +70,40 @@ frame on the service cards. No stock photography, and it all stays crisp at any
 size. The only raster imagery on the page is the Ohana Villas case study, which
 is real project material rather than decoration.
 
-## Case study
+## Case studies
 
-`#work` carries one project: Ohana Villas Phase I2, Damour · Chouf. The five
-sheet images in `assets/img/work/` are rendered out of the issued package at
-170 dpi, cropped to drop the title block, trimmed and encoded as webp at 1200 px
-wide. To regenerate or add a sheet, render the PDF with `pdftoppm -r 170`, crop
-the right-hand ~16 % (the title block, which carries the consultant's contact
-details and the approval initials), trim the white margin and encode with
-`cwebp -q 80`.
+`#work` carries two projects, each one a `.project` block — header card, sheet
+grid, three closing notes — separated by a rule:
 
-The source PDFs live in `Ohana/`, which is gitignored on purpose: anything
-committed here lands in the deploy root and would be publicly fetchable. Keep
-issued client drawings out of the repo and publish only the cropped previews.
+| | Project | Files |
+|---|---|---|
+| 01 | **Ohana Villas Phase I2**, Damour · Chouf — reinforcement shop drawings and BBS | `ohana-*.webp` |
+| 02 | **Anjar–Kherbet Rouha Solar Plant**, Bekaa — PV support structure analysis and design | `pv-*.webp` |
+
+Adding a third means copying a `.project` block, dropping its images into
+`assets/img/work/` and adding every new string to `AR` in `i18n.js` (see
+Arabic). Nothing in the CSS is keyed to a project.
+
+**Ohana sheets.** Rendered out of the issued package at 170 dpi, cropped to drop
+the title block, trimmed and encoded as webp at 1200 px wide. To regenerate one,
+render the PDF with `pdftoppm -r 170`, crop the right-hand ~16 % (the title
+block, which carries the consultant's contact details and the approval
+initials), trim the white margin and encode with `cwebp -q 80`.
+
+**Solar sheets.** Analysis output — the wind pressure map, the base connection
+and anchor checks, the spread footing — arrives as screenshots rather than
+sheets, so they are flattened onto white, trimmed to content and encoded at
+`-q 88`; that quality holds the small report type without the file cost of
+lossless. The array layout is a 10525 px drawing export, trimmed and resampled
+to 1400 px. The two site photographs are portrait, cropped to a 16:9 band and
+encoded at `-q 80` — one as the header image, one as the closing `sheet--full
+sheet--photo` card, which is the only card in either project that fills its
+frame instead of being letterboxed onto white.
+
+The source material lives in `Ohana/` and `Anjar-Kherbet Rouha-PV Panels
+Analysis/`, both gitignored on purpose: anything committed here lands in the
+deploy root and would be publicly fetchable. Keep issued client drawings and
+raw analysis output out of the repo and publish only the cropped previews.
 
 ## Hero sizing
 

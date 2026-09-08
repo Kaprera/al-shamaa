@@ -4,4 +4,8 @@
 # committed here lands in the deploy root and would be publicly fetchable.
 /Ohana/
 
+# Same for the solar plant: the analysis output and the site photographs as
+# supplied. The site ships webp previews cropped out of these.
+/Anjar-Kherbet Rouha-PV Panels Analysis/
+
 .DS_Store
