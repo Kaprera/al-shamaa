@@ -174,6 +174,14 @@
     "The outcome": "النتيجة",
     "Elevations, plans, 3D views and the bar bending schedule all came off that one model.": "المقاطع والمساقط واللقطات ثلاثية الأبعاد وجدول ثني الحديد خرجت جميعها من النموذج ذاته.",
 
+    /* work.html — the page title and description are looked up here too */
+    "Selected Work — Reinforcement and Solar Support Case Studies | AL-Shamaa": "مختارات من أعمالنا — دراسات حالة في تفصيل حديد التسليح وهياكل الطاقة الشمسية | الشمّاع",
+    "Two AL-Shamaa case studies in full: the Ohana Villas Phase I2 reinforcement package in Damour, and the Anjar–Kherbet Rouha solar plant support structure in the Bekaa.": "دراستا حالة من أعمال الشمّاع بالتفصيل: حزمة تسليح فلل Ohana في المرحلة I2 بالدامور، وهيكل حمل محطة الطاقة الشمسية في عنجر–خربة روحا بالبقاع.",
+    "Home": "الرئيسية",
+    "One reinforcement package where every column is raked, and one solar plant where the wind rather than the weight decides the steel. Both are set out in full — sheets, analysis and all — on the work page.": "حزمة حديد تسليح كلّ أعمدتها مائلة، ومحطة طاقة شمسية تحدّد الرياح فيها مقاطع الحديد لا الأوزان. المشروعان معروضان بالكامل — باللوحات والتحليل — في صفحة الأعمال.",
+    "Read the case study": "اقرأ دراسة الحالة",
+    "View both case studies": "استعرض دراستي الحالة",
+
     /* Anjar–Kherbet Rouha solar plant case study. "Case study", "Scope",
        "Elements", "Method" and the three note headings are shared with the
        Ohana block above — they are keyed once and used by both. */
@@ -210,7 +218,6 @@
   var root  = document.documentElement;
   var EN_TITLE = document.title;
   var EN_DESC  = attr('meta[name="description"]', 'content');
-  var AR_DESC  = META.desc;
 
   function attr(sel, name) {
     var el = document.querySelector(sel);
@@ -233,9 +240,13 @@
     root.setAttribute('lang', lang);
     root.setAttribute('dir', toArabic ? 'rtl' : 'ltr');
 
-    document.title = toArabic ? META.title : EN_TITLE;
+    /* The title and the description are keyed by their English the same way
+       every other string is, so a second page translates by adding two keys
+       rather than by carrying its own copy of this file. META.title/desc stay
+       as the landing page's, and as the fallback for a page with neither. */
+    document.title = toArabic ? (AR[EN_TITLE] || META.title) : EN_TITLE;
     var d = document.querySelector('meta[name="description"]');
-    if (d) d.setAttribute('content', toArabic ? AR_DESC : EN_DESC);
+    if (d) d.setAttribute('content', toArabic ? (AR[EN_DESC] || META.desc) : EN_DESC);
 
     var nav = document.getElementById('nav');
     if (nav) nav.setAttribute('aria-label', toArabic ? META.nav : 'Primary');

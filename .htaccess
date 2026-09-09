@@ -62,14 +62,18 @@
 </IfModule>
 
 # The originals kept for re-exporting the marks are not part of the site.
-# Neither is the issued Ohana drawing package — the site ships cropped webp
-# previews of those sheets, not the client PDFs. The folder is gitignored, so
-# this only matters if the working directory is ever uploaded whole.
+# Neither is the source material behind the two case studies — the site ships
+# cropped webp previews, not the client PDFs or the raw analysis output. Both
+# folders are gitignored, so this only matters if the working directory is ever
+# uploaded whole.
 <IfModule mod_authz_core.c>
   <Directory "assets/img/_source">
     Require all denied
   </Directory>
   <Directory "Ohana">
+    Require all denied
+  </Directory>
+  <Directory "Anjar-Kherbet Rouha-PV Panels Analysis">
     Require all denied
   </Directory>
 </IfModule>

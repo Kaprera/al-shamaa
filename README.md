@@ -1,7 +1,8 @@
 # AL-Shamaa — Landing Page
 
-Static landing page for **AL-Shamaa Engineering Services and Consultancy**.
-No build step, no dependencies — open `index.html` or serve the folder.
+Static site for **AL-Shamaa Engineering Services and Consultancy** — a landing
+page and a case-studies page. No build step, no dependencies — open
+`index.html` or serve the folder.
 
 ```bash
 python3 -m http.server 8912   # then visit http://localhost:8912
@@ -10,7 +11,8 @@ python3 -m http.server 8912   # then visit http://localhost:8912
 ## Structure
 
 ```
-index.html              markup + all inline technical SVG artwork
+index.html              landing page — markup + all inline technical SVG artwork
+work.html               the two case studies in full (see Pages)
 assets/css/styles.css   @font-face, design tokens, layout, animation, RTL
 assets/js/i18n.js       EN/AR switching, persistence, document attributes
 assets/js/main.js       scroll reveal, counters, drawer, parallax, scrollspy
@@ -27,7 +29,7 @@ assets/img/
   _source/              full-resolution originals — NOT part of the site.
                         Re-export the marks from here; do not link to them.
 robots.txt              crawl rules + sitemap pointer
-sitemap.xml             single URL
+sitemap.xml             both URLs
 _headers                security + cache headers — Netlify / Cloudflare Pages
 .htaccess               ditto — Apache / cPanel
 vercel.json             ditto — Vercel
@@ -38,6 +40,37 @@ deploy/CSP.txt          the CSP, explained, and how to re-hash it
 Only one of the four header files does anything on any given host; the rest are
 inert. **Read `deploy/CSP.txt` before touching the CSP or the inline script in
 `<head>`** — they are coupled by a hash.
+
+## Pages
+
+Two, and the second exists because the case studies outgrew a section:
+
+| | Carries |
+|---|---|
+| `index.html` | hero → capability marquee → about → services → capabilities → process → **work teaser** → sectors → CTA → footer |
+| `work.html` | breadcrumb → **both case studies in full** → CTA → footer |
+
+`#work` on the landing page is now a teaser: the section heading, the two
+project header cards, and links through. The sheet grids and the closing notes
+live only on `work.html`, so the landing page stopped carrying ~2,400 px of
+drawings a visitor had not asked for, and the nav anchor still works.
+
+**The chrome is duplicated, deliberately.** Header, drawer, CTA and footer are
+copied into both files rather than pulled from a partial, because a partial
+needs a build step and the whole architecture here is that there isn't one.
+Edit one and edit the other — the header nav, the drawer, the footer link
+lists and the CTA are the four blocks that exist twice.
+
+**Links differ between the two.** On `work.html` every landing-page section
+anchor is a full `index.html#…` link, the brand goes to `index.html`, and only
+`#top`, `#work` and `#contact` stay in-page (the CTA is on both). The `Work`
+nav item and the footer's `Selected work` carry `aria-current="page"` there.
+
+**Two things are per-page and easy to miss.** The `?v=` query strings, which
+have to be bumped in *both* files when you edit CSS or JS; and the `<title>`
+and `<meta name="description">`, which `i18n.js` translates by looking their
+English up as `AR` keys like any other string. A third page adds two keys; a
+page with neither falls back to the landing page's Arabic.
 
 ## Design system
 
@@ -72,17 +105,19 @@ is real project material rather than decoration.
 
 ## Case studies
 
-`#work` carries two projects, each one a `.project` block — header card, sheet
-grid, three closing notes — separated by a rule:
+`work.html` carries two projects, each one a `.project` block — header card,
+sheet grid, three closing notes — separated by a rule, and anchored at
+`#ohana` and `#solar` so the landing page's teaser cards can link straight in:
 
 | | Project | Files |
 |---|---|---|
 | 01 | **Ohana Villas Phase I2**, Damour · Chouf — reinforcement shop drawings and BBS | `ohana-*.webp` |
 | 02 | **Anjar–Kherbet Rouha Solar Plant**, Bekaa — PV support structure analysis and design | `pv-*.webp` |
 
-Adding a third means copying a `.project` block, dropping its images into
-`assets/img/work/` and adding every new string to `AR` in `i18n.js` (see
-Arabic). Nothing in the CSS is keyed to a project.
+Adding a third means copying a `.project` block into `work.html`, giving it an
+`id`, dropping its images into `assets/img/work/`, adding a teaser card to
+`index.html` and adding every new string to `AR` in `i18n.js` (see Arabic).
+Nothing in the CSS is keyed to a project.
 
 **Ohana sheets.** Rendered out of the issued package at 170 dpi, cropped to drop
 the title block, trimmed and encoded as webp at 1200 px wide. To regenerate one,
@@ -220,8 +255,14 @@ the second arrow removed.
 
 ## Sections
 
-Hero → capability marquee → about + figures → three services → capabilities
-bento → five-step process → selected work → sectors → CTA → footer.
+**index.html** — hero → capability marquee → about + figures → three services →
+capabilities bento → five-step process → selected work (teaser) → sectors →
+CTA → footer.
+
+**work.html** — breadcrumb → the two case studies → CTA → footer. It opens on
+the ink ground rather than the hero, which is what lets the header stay in its
+transparent, light-mark state at the top of the page; `.workpage` adds the top
+padding that clears the fixed header.
 
 ## Motion
 
@@ -314,8 +355,9 @@ scrolled. Parallax and mirror now live on different elements and coexist.
 
 ### If you edit CSS or JS
 
-`index.html` links each of the three with a `?v=` query string, and the hosts
-cache them for a year as `immutable`. **Bump the `?v=` on any file you change**
+`index.html` and `work.html` each link the three with a `?v=` query string, and
+the hosts cache them for a year as `immutable`. **Bump the `?v=` on any file you
+change, in both pages**
 or returning visitors keep the old one — and so does the CDN, which is the
 failure mode that bites: the HTML revalidates on every load, so a new page ships
 against a year-old stylesheet and the new rules simply are not there. Bump only
@@ -361,6 +403,13 @@ its whitespace — and it stops running until you regenerate the hash.
    experience / projects completed are confirmed, swap them in — the
    `data-count` and `data-suffix` attributes drive the count-up animation.
 3. **Domain.** Everything is wired to `https://al-shamaa.com` — the canonical
-   link, `og:url`, the absolute `og:image`, the JSON-LD `@id`, `robots.txt` and
-   `sitemap.xml`. If the real host differs, those are the six places to change.
-4. **Arabic copy.** Still worth a native engineer's review before launch.
+   link, `og:url`, the absolute `og:image` and the JSON-LD in *both* pages,
+   plus `robots.txt` and `sitemap.xml`. If the real host differs, those are the
+   places to change.
+4. **Vercel and the `.html` extension.** `vercel.json` sets `cleanUrls: true`,
+   so on Vercel — and only there — `/work.html` 308s to `/work`, which means
+   the canonical URL and the sitemap entry both point at a redirect. Apache,
+   nginx, Netlify and Cloudflare Pages all serve the extension as written. If
+   you deploy to Vercel, either set `cleanUrls: false` or change the canonical
+   and the sitemap to `/work`; on any other host there is nothing to do.
+5. **Arabic copy.** Still worth a native engineer's review before launch.

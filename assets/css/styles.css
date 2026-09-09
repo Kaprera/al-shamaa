@@ -875,6 +875,29 @@ body.menu-open .drawer a{ opacity:1; transform:none; }
 .case__facts dt{ font-family:var(--font-mono); font-size:.63rem; letter-spacing:.15em; text-transform:uppercase; color:rgba(255,255,255,.45); }
 .case__facts dd{ font-size:.875rem; color:rgba(255,255,255,.8); }
 
+/* On work.html this section opens the document, so it has to clear the fixed
+   header rather than start where a mid-page section would. The dark ground is
+   why the header can stay in its transparent, light-mark state up there. */
+.workpage{ padding-top:clamp(128px,13vw,196px); }
+.crumb{
+  display:flex; gap:10px; align-items:center;
+  margin-bottom:clamp(26px,3vw,40px);
+  font-family:var(--font-mono); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase;
+  color:rgba(255,255,255,.42);
+}
+.crumb a{ color:rgba(255,255,255,.62); text-decoration:none; transition:color .4s; }
+.crumb a:hover{ color:var(--gold-light); }
+.crumb [aria-current]{ color:rgba(255,255,255,.42); }
+
+/* The landing page shows the two header cards only, stacked, each linking
+   through to its case study on work.html. */
+.case-stack{ display:grid; gap:14px; }
+.case__more{ margin-top:6px; justify-self:start; }
+.work__more{ margin-top:clamp(28px,3.4vw,44px); display:flex; justify-content:center; }
+/* .tlink's hover colour is the deep gold, which is meant for the paper
+   grounds; on the ink band it reads as almost black. */
+.work .tlink:hover{ color:var(--gold-light); }
+
 /* The section carries more than one project. Each is a block — header card,
    sheet grid, closing notes — and the rule is the seam between them. */
 .project + .project{
